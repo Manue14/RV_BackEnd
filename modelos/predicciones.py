@@ -59,7 +59,8 @@ def predecir_ventas(producto, tienda=None):
         'tapb': tapb,
         'tendencia_estimacion': tendencia,
         'confiabilidad': confiabilidad,
-        'prediccion_mensual': predicciones_mensuales.to_dict(),
+        'prediccion_mensual': predicciones_mensuales.rename_axis('Periodo').rename(index=lambda x: x.strftime('%Y-%m')).to_dict(),
+        'ventas_anteriores': series.rename_axis('Periodo').rename(index=lambda x: x.strftime('%Y-%m')).to_dict()
     }
 
 def clasificar_confiabilidad(tapb):
