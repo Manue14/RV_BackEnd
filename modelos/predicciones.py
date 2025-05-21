@@ -17,8 +17,9 @@ def predecir_ventas(producto, tienda=None):
         ventas_filtradas = ventas_df[(ventas_df['Nombre_Producto'] == producto) & (ventas_df['Tienda'] == tienda)]
         modelo_info = modelos_df[(modelos_df['Producto'] == producto) & (modelos_df['Tienda'] == tienda)]
     else:
+        tienda = 'Todas'
         ventas_filtradas = ventas_df[ventas_df['Nombre_Producto'] == producto]
-        modelo_info = modelos_df[(modelos_df['Producto'] == producto) & (modelos_df['Tienda'] == 'Todas')]
+        modelo_info = modelos_df[(modelos_df['Producto'] == producto) & (modelos_df['Tienda'] == tienda)]
 
     if ventas_filtradas.empty or modelo_info.empty:
         raise ValueError("No hay datos o modelo para esta combinación")
