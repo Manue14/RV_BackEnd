@@ -3,6 +3,7 @@ import json
 from flask_cors import CORS, cross_origin
 import pandas as pd
 import os
+from modelos import predicciones
 app = Flask(__name__)
 CORS(
     app,
@@ -25,7 +26,7 @@ def get_tiendas():
         return {'error': 'No se ha podido leer el archivo'}, 404
 
 @app.get('/datos_tienda')
-def post_tiendas():
+def get_tienda():
     try:
         tienda_id = request.args.get("idTienda")
         print(tienda_id)
@@ -46,18 +47,16 @@ def post_tiendas():
     except FileNotFoundError:
         return {'error': 'No se ha podido leer el archivo'}, 404
 
-@app.post("/predict")
+@app.get("/predict")
 def predict():
     try:
-        data = request.get_json(force=True)
-        print("Datos recibidos:", data)
-        return jsonify({
-            'status': 'success',
-            'message': 'Datos recibidos correctamente',
-            'data': data
-        }), 200
+        tienda = request.args.get("tienda")
+        familia = request.args.get("familia")
+
+        return predicciones.predecir_ventas(str(familia), str(tienda))
 
     except Exception as e:
+        print(e)
         return jsonify({
             'status': 'error',
             'message': str(e)
