@@ -1,7 +1,7 @@
 import pandas as pd
-from predecir_con_lgbm import predecir_con_lgbm_anual, predecir_con_lgbm_mensual
-from predecir_con_sarima import predecir_con_sarima
-from predecir_con_winters import predecir_con_winters
+from modelos.predecir_con_lgbm import predecir_con_lgbm_anual, predecir_con_lgbm_mensual
+from modelos.predecir_con_sarima import predecir_con_sarima
+from modelos.predecir_con_winters import predecir_con_winters
 import os
 import numpy as np
 
@@ -79,12 +79,13 @@ def predecir_ventas(producto, tienda=None, temporada=None):
         'producto': producto,
         'tienda': tienda,
         'temporada': temporada,
-        'prediccion_anual': predicciones.to_dict(),
+        'prediccion_anual': predicciones.rename_axis('Periodo').rename(index = lambda x: x.strftime('%Y-%m')).to_dict(),
         'prediccion_anual_total': int(ventas_anuales),
         'tapb': tapb,
         'tendencia_estimacion': tendencia,
         'confiabilidad': confiabilidad,
-        'prediccion_mensual': predicciones_mensuales.to_dict(),
+        'prediccion_mensual': predicciones_mensuales.rename_axis('Periodo').rename(index = lambda x: x.strftime('%Y-%m')).to_dict(),
+        'ventas_anteriores': series.rename_axis('Periodo').rename(index = lambda x: x.strftime('%Y-%m')).to_dict()
     }
 
 def clasificar_confiabilidad(tapb):
