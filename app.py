@@ -24,6 +24,20 @@ def get_tiendas():
         return {'error': str(e)}, 500
     except FileNotFoundError:
         return {'error': 'No se ha podido leer el archivo'}, 404
+    
+@app.get('/top_familias')
+def get_top_familias():
+    try:
+        file_path = os.path.join(app.root_path, 'api', 'top_familias.json')
+        with open(file_path, 'r', encoding='utf-8-sig') as file:
+            top_familias = json.load(file)
+        return top_familias
+
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        app.logger.error(f"Error leyendo {file_path}: {e}")
+        return {'error': str(e)}, 500
+    except FileNotFoundError:
+        return {'error': 'No se ha podido leer el archivo'}, 404
 
 @app.get('/datos_tienda')
 def get_tienda():
@@ -47,13 +61,28 @@ def get_tienda():
     except FileNotFoundError:
         return {'error': 'No se ha podido leer el archivo'}, 404
 
-@app.get("/predict")
-def predict():
+@app.get("/predict_by_tienda")
+def predict_by_tienda():
     try:
         tienda = request.args.get("tienda")
         familia = request.args.get("familia")
 
-        return predicciones.predecir_ventas(str(familia), str(tienda))
+        return predicciones.predecir_ventas(str(familia), tienda=str(tienda))
+
+    except Exception as e:
+        print(e)
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 400
+    
+@app.get("/predict_by_temporada")
+def predict_by_temporada():
+    try:
+        temporada = request.args.get("temporada")
+        familia = request.args.get("familia")
+
+        return predicciones.predecir_ventas(str(familia), temporada=str(temporada))
 
     except Exception as e:
         print(e)

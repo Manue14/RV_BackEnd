@@ -1,4 +1,5 @@
 {
+  "Todas": {"productos": [111, 123, 129, 184, 525, 613, 515], "codigo_postal": "XXXXX", "provincia": "--ALL--"},
   "21504": {"productos": [111, 123, 129, 184, 525], "codigo_postal": "15701", "provincia": "A CORUÑA"},
   "22808": {"productos": [111, 123, 129, 184, 525], "codigo_postal": "28001", "provincia": "MADRID"},
   "23202": {"productos": [111, 129, 184, 525, 613], "codigo_postal": "32003", "provincia": "OURENSE"},

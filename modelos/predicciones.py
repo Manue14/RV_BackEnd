@@ -67,7 +67,9 @@ def predecir_ventas(producto, tienda=None, temporada=None):
         modelo_mensual_path = os.path.join(MODELOS_MENSUAL_DIR, f"modelo_{tienda}_{producto_clean}.pkl")
     else:
         modelo_mensual_path = os.path.join(MODELOS_MENSUAL_DIR, f"modelo_{tienda}_{temporada}_{producto_clean}.pkl")
+    
     predicciones_mensuales = predecir_con_lgbm_mensual(series, modelo_mensual_path)
+    
 
     # métricas
     ventas_anuales = predicciones.sum()
