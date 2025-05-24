@@ -36,14 +36,7 @@ def predecir_con_lgbm_anual(series, modelo_path):
 
     pred_series = pd.Series(predicciones, index=fechas_pred)
 
-    # Calcular TAPB sobre los 12 meses previos a la predicción
-    test_real = series[-25:-13]
-    tapb = np.nan
-    if len(test_real) == 12:
-        tab = np.sum(pred_series.values - test_real.values)
-        tapb = 100 * tab / np.sum(test_real.values)
-
-    return pred_series, tapb
+    return pred_series
 
 def predecir_con_lgbm_mensual(serie, modelo_path, pasos=12):
     with open(modelo_path, 'rb') as f:
