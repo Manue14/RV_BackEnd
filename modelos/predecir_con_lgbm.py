@@ -17,6 +17,8 @@ def predecir_con_lgbm_anual(series, modelo_path):
     predicciones = []
     fechas_pred = []
 
+    print(data)
+
     for i in range(12):
         # Extraer los últimos 'window' valores como lags
         lags = [serie_pred.iloc[-j] for j in range(window, 0, -1)]
@@ -100,6 +102,8 @@ def predecir_con_lgbm_mensual(serie, modelo_path, pasos=12):
         next_date = (last_date + pd.DateOffset(months=1)).replace(day=1)
         fechas_pred.append(next_date)
         serie_pred.loc[next_date] = pred
+
+        print(data)
 
     pred_series = pd.Series(predicciones, index=fechas_pred)
     return pred_series
