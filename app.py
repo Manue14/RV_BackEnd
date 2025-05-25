@@ -38,6 +38,20 @@ def get_top_familias():
         return {'error': str(e)}, 500
     except FileNotFoundError:
         return {'error': 'No se ha podido leer el archivo'}, 404
+    
+@app.get('/top_productos')
+def get_top_productos():
+    try:
+        file_path = os.path.join(app.root_path, 'api', 'top_productos.json')
+        with open(file_path, 'r', encoding='utf-8-sig') as file:
+            top_productos = json.load(file)
+        return top_productos
+
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        app.logger.error(f"Error leyendo {file_path}: {e}")
+        return {'error': str(e)}, 500
+    except FileNotFoundError:
+        return {'error': 'No se ha podido leer el archivo'}, 404
 
 @app.get('/datos_tienda')
 def get_tienda():
