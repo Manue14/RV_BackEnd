@@ -93,11 +93,11 @@ def predecir_ventas(producto, tienda=None, temporada=None):
 def clasificar_confiabilidad(tapb):
     valor = abs(tapb)
     if valor < 5:
-        return 'muy alta'
+        return 'moi alta'
     elif valor < 10:
         return 'alta'
     elif valor < 20:
         return 'media'
     else:
-        return 'baja'
+        return 'baixa'
     
