@@ -1,0 +1,13 @@
+{
+  "Todas": {"productos": [111, 123, 129, 184, 525, 613, 515], "codigo_postal": "XXXXX", "provincia": "--ALL--"},
+  "21504": {"productos": [111, 123, 129, 184, 525], "codigo_postal": "15701", "provincia": "A CORUÑA"},
+  "22808": {"productos": [111, 123, 129, 184, 525], "codigo_postal": "28001", "provincia": "MADRID"},
+  "23202": {"productos": [111, 129, 184, 525, 613], "codigo_postal": "32003", "provincia": "OURENSE"},
+  "23605": {"productos": [111, 123, 129, 184, 525], "codigo_postal": "36001", "provincia": "PONTEVEDRA"},
+  "26001": {"productos": [111, 123, 129, 184, 613], "codigo_postal": "15701", "provincia": "OURENSE"},
+  "91592": {"productos":[111, 129, 184, 515, 525], "codigo_postal": "15189", "provincia": "A CORUÑA"},
+  "92892": {"productos":[111, 123, 129, 184, 525],"codigo_postal": "28230", "provincia": "MADRID"},
+  "92894": {"productos":[111, 123, 129, 184, 525],"codigo_postal": "28702", "provincia": "MADRID"},
+  "92991": {"productos":[111, 123, 129, 184, 525],"codigo_postal": "29004", "provincia": "MÁLAGA"},
+  "94191": {"productos":[111, 129, 184, 515, 525],"codigo_postal": "41300", "provincia": "SEVILLA"}
+}

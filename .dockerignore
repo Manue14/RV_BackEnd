@@ -1,0 +1,30 @@
+# Ignorar el entorno virtual local
+.venv
+venv/
+
+# Ignorar caches de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar archivos de configuración local
+.env
+.env.*
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar datos locales, bases de datos, y archivos temporales
+*.sqlite3
+*.db
+tmp/
+data/
+
+# Ignorar archivos de sistema de Windows/Mac
+.DS_Store
+Thumbs.db
+
+# Ignorar IDEs y editores
+.vscode/
+.idea/
+*.iml
